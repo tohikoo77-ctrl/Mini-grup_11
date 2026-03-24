@@ -1,1 +1,1 @@
-# Mini-grup_11
+# mini_grup_11
