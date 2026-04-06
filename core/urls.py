@@ -20,6 +20,7 @@ urlpatterns = [
 
     # Your app endpoints
     path('accounts/', include('apps.accounts.urls')),
+    path('catalog/', include('apps.catalog.urls')),
 ]
 
 # Serve media and static files in development

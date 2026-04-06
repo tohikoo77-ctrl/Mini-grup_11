@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
+    'rest_framework_json_api',
+    'django_filters',
 ]
 
 THIRD_APPS = {
@@ -129,7 +131,7 @@ else:
         "default": dj_database_url.config(
             default=DB_URL,  # DB_URL comes from envs.py, e.g. "postgres://user:pass@host:port/dbname"
             conn_max_age=600,
-            ssl_require=True
+            ssl_require=False
         )
     }
 
@@ -298,11 +300,7 @@ DRF_STANDARDIZED_ERRORS = {"ENABLE_IN_DEBUG_FOR_UNHANDLED_EXCEPTIONS": True}
 
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": REDIS_URL,
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     }
 }
 
