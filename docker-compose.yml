@@ -16,6 +16,7 @@ services:
     volumes:
       - .:/usr/src/app
       - ./static:/usr/src/app/static
+      - ./staticfiles:/app/staticfiles
       - ./media:/usr/src/app/media
     user: root
     depends_on:
