@@ -55,6 +55,10 @@ class Profile(BaseModel):
         default=UserRoles.CUSTOMER,
         help_text=_("The role of the user"),
     )
+    # username = models.CharField(
+    #     max_length=150,
+    #     unique=True,
+    # )
 
     class Meta:
         ordering = ["-created"]

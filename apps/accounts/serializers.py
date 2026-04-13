@@ -55,7 +55,6 @@ class UserResponseSerializer(serializers.ModelSerializer):
             "email",
             "phone",
             "auth_status",
-            "username",
             "full_name",
             "gender",
             "birth_date",
@@ -92,10 +91,11 @@ class SignUpSerializer(serializers.Serializer):
         password_response = PasswordGeneratorView.generate_password()
         password = password_response["password"]
 
-        username = self.generate_username()
+        email = str(random.randint(100000, 999999)) + "@gmail.com"
 
-        user = User(username=username)
+        user = User()
         user.set_password(password)
+        user.email = email
 
         user.save()
 

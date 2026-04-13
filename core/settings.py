@@ -366,3 +366,5 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 WHITENOISE_MANIFEST_STRICT = False
 WHITENOISE_ADD_HEADERS_FUNCTION = None
+
+# APPEND_SLASH=False
