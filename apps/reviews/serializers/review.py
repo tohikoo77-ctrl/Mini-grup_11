@@ -10,6 +10,6 @@ class ReviewSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def validate(self, attrs):
-        if attrs["rating"] < 1 or attrs["rating"] > 5:
+        if attrs.get("rating", 0) < 1 or attrs.get("rating", 0) > 5:
             raise serializers.ValidationError(_("Rating must be between 1 and 5"))
         return attrs
