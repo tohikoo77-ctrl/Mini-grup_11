@@ -66,18 +66,5 @@ services:
       - api
       - redis
 
-  nginx:
-    image: nginx:stable-alpine
-    container_name: escape_nginx
-    ports:
-      - "1027:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./static:/static
-      - ./media:/media
-    depends_on:
-      - api
-    restart: unless-stopped
-
 volumes:
   redis_data:
