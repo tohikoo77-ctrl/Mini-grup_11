@@ -181,6 +181,7 @@ REST_FRAMEWORK = {
 
     # 🎨 Renderers (JSON:API first)
     "DEFAULT_RENDERER_CLASSES": (
+        "rest_framework.renderers.JSONRenderer",
         "rest_framework_json_api.renderers.JSONRenderer",
         "rest_framework_json_api.renderers.BrowsableAPIRenderer",  # disable in prod if not needed
     ),
