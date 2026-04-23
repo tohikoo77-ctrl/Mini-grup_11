@@ -218,6 +218,7 @@ REST_FRAMEWORK = {
     # 📥 Parsers (JSON:API + fallback)
     "DEFAULT_PARSER_CLASSES": (
         "rest_framework_json_api.parsers.JSONParser",
+        "rest_framework.parsers.JSONParser",
         "rest_framework.parsers.FormParser",
         "rest_framework.parsers.MultiPartParser",
     ),
