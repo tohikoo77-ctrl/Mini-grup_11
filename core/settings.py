@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
-    'rest_framework_json_api',
     'django_filters',
 ]
 
@@ -175,50 +174,46 @@ USE_L10N = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    # ⚡ Pagination (JSON:API compatible)
+    # ⚡ Pagination
     "PAGE_SIZE": 10,
-    "DEFAULT_PAGINATION_CLASS": "rest_framework_json_api.pagination.JsonApiPageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
 
-    # 🎨 Renderers (JSON:API first)
+    # 🎨 Renderers
     "DEFAULT_RENDERER_CLASSES": (
         "rest_framework.renderers.JSONRenderer",
-        "rest_framework_json_api.renderers.JSONRenderer",
-        "rest_framework_json_api.renderers.BrowsableAPIRenderer",  # disable in prod if not needed
+        "rest_framework.renderers.BrowsableAPIRenderer",
     ),
 
-    # 📝 Metadata
-    "DEFAULT_METADATA_CLASS": "rest_framework_json_api.metadata.JSONAPIMetadata",
+    # 📝 Metadata (optional, default ham ishlaydi)
+    "DEFAULT_METADATA_CLASS": "rest_framework.metadata.SimpleMetadata",
 
     # 🔎 Filtering, Ordering, Searching
     "DEFAULT_FILTER_BACKENDS": (
-        "rest_framework_json_api.filters.QueryParameterValidationFilter",
-        "rest_framework_json_api.filters.OrderingFilter",
-        "rest_framework_json_api.django_filters.DjangoFilterBackend",
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
         "rest_framework.filters.SearchFilter",
     ),
-    "SEARCH_PARAM": "filter[search]",
+    "SEARCH_PARAM": "search",  # eski: filter[search]
 
     # 🧪 Testing
     "TEST_REQUEST_RENDERER_CLASSES": (
-        "rest_framework_json_api.renderers.JSONRenderer",
+        "rest_framework.renderers.JSONRenderer",
     ),
-    "TEST_REQUEST_DEFAULT_FORMAT": "vnd.api+json",
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
 
     # 🔐 Permissions
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
-        # "# apps.shared.permissions.HasCompletedSignup",
     ),
 
-    # 🔑 Authentication (JWT first)
+    # 🔑 Authentication
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-        "rest_framework.authentication.BasicAuthentication",  # useful for docs/dev
+        "rest_framework.authentication.BasicAuthentication",
     ),
 
-    # 📥 Parsers (JSON:API + fallback)
+    # 📥 Parsers
     "DEFAULT_PARSER_CLASSES": (
-        "rest_framework_json_api.parsers.JSONParser",
         "rest_framework.parsers.JSONParser",
         "rest_framework.parsers.FormParser",
         "rest_framework.parsers.MultiPartParser",
