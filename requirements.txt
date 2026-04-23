@@ -14,7 +14,6 @@ django-import-export[all]==4.4.0
 django-schema-viewer==0.5.3
 drf-spectacular[sidecar]==0.29.0
 django-filter==25.2
-djangorestframework-jsonapi==8.1.0
 Pillow==12.1.1
 django-unfold==0.83.1
 django-celery-beat==2.9.0
