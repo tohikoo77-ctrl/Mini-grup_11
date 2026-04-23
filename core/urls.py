@@ -21,6 +21,14 @@ urlpatterns = [
     # Your app endpoints
     path('accounts/', include('apps.accounts.urls')),
     path('catalog/', include('apps.catalog.urls')),
+    path('reviews/', include('apps.reviews.urls')),
+    path('payments/', include('apps.payments.urls')),
+    path('orders/', include('apps.orders.urls')),
+    path('notifications/', include('apps.notifications.urls')),
+    path('marketing/', include('apps.marketing.urls')),
+    path('content/', include('apps.content.urls')),
+    path('cart/', include('apps.cart.urls')),
+    path('common/', include('apps.common.urls')),
 ]
 
 # Serve media and static files in development

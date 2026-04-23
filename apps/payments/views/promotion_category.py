@@ -10,8 +10,6 @@ from apps.payments.serializers.promotion_category import (
 
 
 class PromotionCategoryViewSet(viewsets.ModelViewSet):
-    """ViewSet for managing promotion categories"""
-
     queryset = PromotionCategory.objects.all()
     serializer_class = PromotionCategorySerializer
 
