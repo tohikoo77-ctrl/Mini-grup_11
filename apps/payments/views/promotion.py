@@ -3,6 +3,9 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.utils import timezone
+from apps.payments.filters import PromotionFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 
 from apps.payments.models import Promotion
 from apps.payments.serializers.promotion import (
@@ -17,6 +20,11 @@ class PromotionViewSet(viewsets.ModelViewSet):
 
     queryset = Promotion.objects.all().select_related("category")
     serializer_class = PromotionSerializer
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = PromotionFilter
+    filterset_fields = '__all__'
+    search_fields = '__all__'
+    ordering_fields = '__all__'
 
     def get_serializer_class(self):
         if self.action == "list":
